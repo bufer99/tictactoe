@@ -87,13 +87,14 @@ function init(){
         canvas.addEventListener('click',canvasClick);
         window.addEventListener('keydown',keyListener);
         canvas.addEventListener('mousemove',function(e){
-            cursor_x = e.layerX;
+            console.log(e)
+            cursor_x = e.offsetX;
         });
         followCursor = setInterval(korongDobas, 10);
     }
 
     function canvasClick(e){
-        korongStartFalling(e.layerX);
+        korongStartFalling(e.offsetX);
         if(PLAYER === p1.value) PLAYER = p2.value;
         else PLAYER = p1.value;
     }
