@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: rgb(68, 173, 199);
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+
+   .menu{ 
+       width: 100%;
+   }
+
+   .menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+
+.menu li {
+  float:left;
+}
+
+.menu li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.menu li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+.container{
+        width:100vw;
+        display: flex;
+    }
+.container > div{
+    flex: 1;
+}
+    .canvas{
+        border:1px solid #000000;
+    }
+
+    .end-container{
+        position: absolute;
+        z-index: 9999;
+        display: none;
+        background-color:aliceblue;
+        width: 500px;
+        border-radius: 10px;
+        top: 50%;
+        left:37.5%;
+        padding: 10px;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .center{
+        text-align: center;
+    }
+
+    #settings{
+        margin-top: 15%;
+        font-size: 20px;
+        margin: 80px auto auto auto;
+        padding: 3px;
+        display: inline-block;
+    }
+
+    .setBtn{
+        display: block;
+        width: 80%;
+        border: none;
+        background-color: #0d6910;
+        color: white;
+        padding: 14px 28px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        margin: 10px;
+        margin-left: 40px;
+    }
+
+    #save{
+        width: 40%;
+        border: none;
+        background-color: #0d6910;
+        color: white;
+        padding: 14px 28px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        margin: 10px;
+        margin-left: 40px;
+    }
+
+    #p2Div{
+        padding-top: 40%;
+    }
+    
+    #p1Div{
+        padding-top: 30%;
+    }
+
+    .players{
+        font-size:50px;
+        text-align: center;
+    }
+
+    .timer{
+        font-size:50px;
+        text-align: center;
+    }
+
+</style>
+<body>
+    <div class="menu">
+        <ul>
+            <li><a href="index.html" >Connect Four</a></li>
+            <li><a href="https://hu.wikipedia.org/wiki/Connect_four" target="_blank">Rules of the game</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <!--BAL OLDAL-->
+        <div class="bal"> 
+            <input type="button" id="save" value="Save Game" disabled>
+            <div class="players" id="p1Div"></div>
+            <div class="timer" id="p1Time"></div>
+        </div>
+        <!--KÖZÉP-->
+        <div class="center">
+            <!--JÁTÉK VÉGE POPUP-->
+            <div class="end-container" id="endDialog">
+                <div class="end-inner">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <button id="confirmEndBtn" value="default">OK</button>
+                </div>
+            </div>
+            <!--KEZDŐ OLDAL-->
+            <div id = "settings">
+                <span style="font-weight: bold;">Players:</span>
+                <br>
+                <br>
+                <input type="text" id="p1" value="1.játékos">
+                <input type="text" id="p2" value="2.játékos">
+                <br>
+                <br>
+                <br>
+                <span style="font-weight: bold;">Time Limit<span style="font-style:italic; font-weight:normal; font-size: 20px;">(in minutes)</span>:</span>
+                <br>
+                <input type="number" id="time" value="0">
+                <br>
+                <br>
+                <br>
+                <span style="font-weight: bold;">Player Pairs:</span>
+                <br>
+                <ul id="pairs"></ul>
+                <span style="font-weight: bold;">Saved Games:</span>
+                <br>
+                <ul id="savedGames"></ul>
+
+                <input class="setBtn" type="button" id="start" value="START">
+                <input class="setBtn" type="button" id="empty" value="Clear Pairs">
+                <input class="setBtn" type="button" id="clrgms" value="Clear Games">
+
+
+            </div>
+            <!--CANVAS-->
+            <canvas id="jatek" width="910" height="884"></canvas>
+        </div>
+        <!--JOBB OLDAL-->
+        <div class="jobb">
+            <div class="players" id="p2Div"></div>
+            <div class="timer" id="p2Time"></div>
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
